@@ -12,3 +12,4 @@ FetchContent_MakeAvailable(Corrosion)
 project(rust_cpp_interop)
 
 add_subdirectory(rust2cpp)
+add_subdirectory(cpp2rust)
