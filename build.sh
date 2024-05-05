@@ -9,6 +9,7 @@ function proto-build() {
     fi
 
     build_dir=$git_root/build
+    mkdir -p $build_dir
     pushd $build_dir
     cmake .. && cmake --build .
     popd
