@@ -12,11 +12,12 @@ function proto-build() {
 
     mkdir -p $build_dir
 
+    # Android
     SYSTEM_NAME="Android"
     SYSTEM_VERSION=21
     targets=("armeabi-v7a" "x86" "arm64-v8a")
     for target in ${targets}; do
-        target_dir=${build_dir}/${target}
+        target_dir=${build_dir}/android-${target}
         mkdir -p $target_dir
         pushd $target_dir
         cmake \
@@ -30,4 +31,17 @@ function proto-build() {
         popd
 
     done
+
+    # Linux
+    processor=x86_64
+    target_dir=${build_dir}/linux-$processor
+
+    mkdir -p $target_dir
+    pushd $target_dir > /dev/null
+    cmake \
+       -DCMAKE_SYSTEM_NAME=Linux \
+       -DCMAKE_SYSTEM_PROCESSOR=$processor \
+       $git_root && \
+    cmake --build .
+    popd > /dev/null
 }
