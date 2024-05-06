@@ -14,7 +14,6 @@ function proto-build() {
 
     SYSTEM_NAME="Android"
     SYSTEM_VERSION=21
-    ANDROID_NDK="/home/mezner/Android/android-ndk-r26d"
     targets=("armeabi-v7a" "x86" "arm64-v8a")
     for target in ${targets}; do
         target_dir=${build_dir}/${target}
